@@ -1,15 +1,22 @@
 package com.example.springgatewaysecondservice;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("/second-service")
+@RequiredArgsConstructor
 @Slf4j
 public class SecondServiceController {
+
+    private final Environment env;
 
     @GetMapping("/welcome")
     public String welcome() {
@@ -23,7 +30,9 @@ public class SecondServiceController {
     }
 
     @GetMapping("/check")
-    public String check() {
-        return "This is a message from Second Service";
+    public String check(HttpServletRequest request) {
+        log.info("Server port={}", request.getServerPort());
+        return String.format("This is a message from Second Service on port %s"
+                , env.getProperty("local.server.port"));
     }
 }

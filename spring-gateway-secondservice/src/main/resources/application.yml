@@ -1,12 +1,16 @@
 server:
-  port: 8002
+  port: 0
 
 eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka   # eureka server
+
+
 spring:
   application:
     name: my-second-service
