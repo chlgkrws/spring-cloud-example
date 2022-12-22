@@ -1,7 +1,6 @@
 package com.example.userservice.rest;
 
 import com.example.userservice.dto.UserDto;
-import com.example.userservice.jpa.UserEntity;
 import com.example.userservice.service.UserService;
 import com.example.userservice.vo.RequestUser;
 import com.example.userservice.vo.ResponseUser;
@@ -10,11 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/")
@@ -27,13 +25,14 @@ public class UserRestController {
 
     private final UserService userService;
 
-    @GetMapping("/health-check")
+    private final Environment env;
 
+    @GetMapping("/user-service/health-check")
     public String status() {
-        return "It's Working in User Service";
+        return String.format("It's Working in User Service on port %s", env.getProperty("local.server.port"));
     }
 
-    @GetMapping("/welcome")
+    @GetMapping("/user-service/welcome")
     public String welcome() {
         return this.greetingMessage;
     }
@@ -50,4 +49,5 @@ public class UserRestController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
 }

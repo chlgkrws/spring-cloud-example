@@ -20,6 +20,7 @@ spring:
             preLogger: true
             postLogger: true
       routes:
+        # First Service
         - id: first-service
           uri: lb://MY-FIRST-SERVICE      # 유레카에 등록된 애플리케이션 이름
           predicates:
@@ -28,6 +29,7 @@ spring:
 #            - AddRequestHeader=first-request, first-request-header2
 #            - AddResponseHeader=first-response, first-response-header2
             - CustomFilter
+        # Second Service
         - id: second-service
           uri: lb://MY-SECOND-SERVICE
           predicates:
@@ -41,6 +43,13 @@ spring:
                 baseMessage: Hi, LoggingFilter
                 preLogger: true
                 postLogger: true
+        # User Service
+        - id: user-service
+          uri: lb://USER-SERVICE	      # 유레카에 등록된 애플리케이션 이름
+          predicates:
+            - Path=/user-service/**
+          filters:
+            - CustomFilter
 
 
 
