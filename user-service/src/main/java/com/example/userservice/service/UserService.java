@@ -28,6 +28,8 @@ public class UserService {
 
         this.userRepository.save(entity);
 
-        return userDto;
+        UserDto returnUserDto = modelMapper.map(entity, UserDto.class);
+
+        return returnUserDto;
     }
 }
