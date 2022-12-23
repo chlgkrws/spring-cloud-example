@@ -10,6 +10,7 @@ import java.util.Date;
 
 @Setter
 @Getter
+@Entity
 @Table(name = "catalog")
 public class CatalogEntity implements Serializable {
     @Id

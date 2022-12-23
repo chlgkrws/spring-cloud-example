@@ -7,4 +7,5 @@ include 'spring-gateway-firstservice'
 include 'spring-gateway-secondservice'
 
 include 'user-service'
+include 'catalog-service'
 
