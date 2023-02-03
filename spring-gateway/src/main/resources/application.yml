@@ -56,6 +56,12 @@ spring:
             - Path=/catalog-service/**
           filters:
             - CustomFilter
+        - id: order-service
+          uri: lb://ORDER-SERVICE          # 유레카에 등록된 애플리케이션 이름
+          predicates:
+            - Path=/order-service/**
+          filters:
+            - CustomFilter
 
 
 
