@@ -32,6 +32,10 @@ dependencies {
     runtimeOnly group: 'com.h2database', name: 'h2', version: '2.1.214'
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.1.0'
 
+    implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+
+
+
 
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'

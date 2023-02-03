@@ -7,7 +7,6 @@ import com.example.userservice.vo.ResponseOrder;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -69,6 +68,18 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException(username);
         }
 
-        return new User(username, "", new ArrayList<>());
+        return new User(username, userEntity.getEncryptedPwd(), new ArrayList<>());
+    }
+
+    public UserDto getUserDetailByEmail(String email) {
+        UserEntity userEntity = this.userRepository.findByEmail(email);
+
+        if (userEntity == null) {
+            throw new UsernameNotFoundException(email);
+        }
+
+        UserDto result = new ModelMapper().map(userEntity, UserDto.class);
+
+        return result;
     }
 }
