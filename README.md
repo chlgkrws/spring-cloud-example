@@ -7,6 +7,27 @@ Spring Cloud로 개발하는 마이크로서비스 애플리케이션(MSA) 강�
 강의에서는 maven 환경과 각 애플리케이션을 별도로 생성하지만 해당 레파지토리에서는 애플리케이션을 별도로 나누지 않고 멀티모듈 형태로 구축하며, gradle을 사용합니다.  
 
 
+### 참고 사항
+
+#### 1. Config 서버 구축 시 private git repo 생성
+- (터미널 사용)
+- 프로젝트 최상위 경로의 application-configs 폴더로 이동
+- git init
+- git add xxxx.yml
+- git commit -m "commit message"
+- pwd 명령어를 통해 현재 경로 확인
+- spring-config application.yml 내용 수정
+```yaml
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: file://{pwd를 통해 얻은 경로 붙여넣기}
+
+```
 
 
 ## Reference📜
