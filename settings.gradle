@@ -3,6 +3,7 @@ rootProject.name = 'spring-cloud-example'
 include 'eureka'
 
 include 'spring-gateway'
+include 'spring-config'
 include 'spring-gateway-firstservice'
 include 'spring-gateway-secondservice'
 
