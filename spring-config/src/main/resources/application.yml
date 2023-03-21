@@ -8,5 +8,6 @@ spring:
     config:
       server:
         git:
-          uri: file:///Users/choehagjun/works/work-space/spring-cloud-example/application-configs
+#          uri: file:///Users/choehagjun/works/work-space/spring-cloud-example/application-configs      # 맥북 경로
+          uri: file://C:\git-repo\spring-cloud-example\application-configs                              # 데스크탑 경로
 
