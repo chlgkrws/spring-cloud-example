@@ -8,6 +8,8 @@ spring:
     config:
       server:
         git:
-#          uri: file:///Users/choehagjun/works/work-space/spring-cloud-example/application-configs      # 맥북 경로
-          uri: file://C:\git-repo\spring-cloud-example\application-configs                              # 데스크탑 경로
-
+          uri: https://github.com/chlgkrws/spring-cloud-example-config.git
+#          uri: file:///Users/choehagjun/works/work-space/spring-cloud-example/application-configs        # (Local Repo) 맥북 경로
+#          uri: file://C:\git-repo\spring-cloud-example\application-configs                               # (Local Repo) 데스크탑 경로
+#          username: [your username] only private repo
+#          password: [your password] only private repo

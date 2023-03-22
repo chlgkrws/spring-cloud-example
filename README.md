@@ -9,14 +9,37 @@ Spring Cloud로 개발하는 마이크로서비스 애플리케이션(MSA) 강�
 
 ### 참고 사항
 
+
+
 #### 1. Config 서버 구축 시 private git repo 생성
+
+1. (Terminal) application-configs 폴더로 이동
+2. Github Repo 생성 (repo 명: spring-cloud-example-config)
+3. (Terminal) git remote add origin https://github.com/{repo명}/spring-cloud-example-config.git 수행
+4. (Terminal) git push --set-upstream origin master 수행
+```yaml
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/{repo명}/spring-cloud-example-config.git
+#          username: [your username] only private repo
+#          password: [your password] only private repo
+
+```
+<br/>
+
+**아래는 Config 정보(yaml)을 로컬 git repo에 저장했을 경우만 사용합니다.**
 - (터미널 사용)
-- 프로젝트 최상위 경로의 application-configs 폴더로 이동
-- git init
-- git add xxxx.yml
-- git commit -m "commit message"
-- pwd 명령어를 통해 현재 경로 확인
-- spring-config application.yml 내용 수정
+1. 프로젝트 최상위 경로의 application-configs 폴더로 이동 
+2. git init 
+3. git add xxxx.yml 
+4. git commit -m "commit message"
+5. pwd 명령어를 통해 현재 경로 확인 
+6. spring-config application.yml 내용 수정
 ```yaml
 spring:
   application:
