@@ -4,12 +4,27 @@ server:
 spring:
   application:
     name: config-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+  profiles:
+    active: native
   cloud:
     config:
       server:
+        native:
+          search-locations: file:///Users/choehagjun/works/work-space/spring-cloud-example/application-configs    # 로컬 파일 경로
         git:
           uri: https://github.com/chlgkrws/spring-cloud-example-config.git
 #          uri: file:///Users/choehagjun/works/work-space/spring-cloud-example/application-configs        # (Local Repo) 맥북 경로
 #          uri: file://C:\git-repo\spring-cloud-example\application-configs                               # (Local Repo) 데스크탑 경로
 #          username: [your username] only private repo
 #          password: [your password] only private repo
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh

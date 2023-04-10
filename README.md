@@ -52,6 +52,22 @@ spring:
 
 ```
 
+#### 2. Rabbit MQ 설치(for Apple Silicon)
+```shell
+# 설치 및 환경설정
+brew update
+
+brew install rabbitmq
+
+export PATH=$PATH:/opt/homebrew/sbin
+
+# 실행
+brew services start rabbitmq
+# 종료
+brew services stop rabbitmq
+```
+
+실행 후 http://localhost:15672로 접속하면 default 사용자인 guest/guest로 접속할 수 있습니다.
 
 ## Reference📜
 

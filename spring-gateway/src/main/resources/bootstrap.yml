@@ -2,6 +2,6 @@ spring:
   cloud:
     config:
       uri: http://127.0.0.1:8888
-      name: ecommerce
-  profiles:
-    active: dev
+      name: config-service        # config server의 application.name을 명시한다는 뜻은 config server에 존재하는 yml파일 중 application.yml를(기본) 가져온다는 뜻입니다.
+#  profiles:
+#    active: dev
